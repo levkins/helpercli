@@ -73,7 +73,7 @@ FinalForm () {
     echo "    sleep 60 and read logs"
     sleep 60
     cd $DChome && docker-compose logs --tail 50
-    curl --resolve ${domain}1.islandsville.com:80:${IPV4_NET}.2 http://${domain}1.islandsville.com
+    curl --resolve ${domain}1.example.com:80:${IPV4_NET}.2 http://${domain}1.example.com
     sed -i "s'${wwwRoot}'/var/www'g" $DChome/cron.$domain.txt
     sed -i "s/ php / docker exec -t ${dom_short}_php_1 php /g" $DChome/cron.$domain.txt
 
@@ -196,18 +196,18 @@ cat > /etc/nginx/sites-enabled/${domain}.conf <<EOF
 server {
     listen          80;
     listen          [::]:80;
-    server_name     ${domain}1.islandsville.com;
+    server_name     ${domain}1.example.com;
     return          301 https://\$server_name\$request_uri permanent;
   }
 
 server {
     listen          443;
     listen          [::]:443;
-    server_name     ${domain}1.islandsville.com;
+    server_name     ${domain}1.example.com;
     error_log       /var/log/nginx/${domain}.log;
     ssl                  on;
-    ssl_certificate      islandsville.crt;
-    ssl_certificate_key  islandsville.key;
+    ssl_certificate      example.crt;
+    ssl_certificate_key  example.key;
     ssl_session_timeout  5m;
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers         ALL:!ADH:+HIGH:+MEDIUM:+LOW:+EXP:!kEDH:!aNULL:!RC4:!SSLv2;
