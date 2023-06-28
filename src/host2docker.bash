@@ -82,7 +82,7 @@ FinalForm () {
     >>>>    If all ok, need in next step add cron and iptables:
     Crontab ADD -- crontab $DChome/cron.$domain.txt
     iptables -A INPUT -p tcp -m tcp -s 127.0.0.1 --dport ${DBNEWPORT} -j ACCEPT
-    iptables -A INPUT -p tcp -m tcp -s 88.99.198.202 --dport ${DBNEWPORT} -j ACCEPT'
+    iptables -A INPUT -p tcp -m tcp -s 127.0.0.2 --dport ${DBNEWPORT} -j ACCEPT'
     nginx -t && nginx -s reload
 
 }
